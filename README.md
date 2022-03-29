@@ -1,6 +1,6 @@
 # IP address tracker
 
-![Design preview for the IP address tracker coding challenge](./design/desktop-preview.jpg)
+![Design preview for the IP address tracker coding challenge](./images/desktop-preview.jpg)
 
 A Frontend Mentor challenge i built to practice responsive CSS and JavaScript.
 
@@ -10,4 +10,4 @@ A Frontend Mentor challenge i built to practice responsive CSS and JavaScript.
 
 ## Mobile view
 
-![mobile](./design/mobile-design.jpg)
+![mobile](./images/mobile-design.jpg)
