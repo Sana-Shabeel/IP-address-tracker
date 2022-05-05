@@ -8,8 +8,8 @@ const btn = document.querySelector(".search-btn");
 const inputValue = input.value.trim();
 
 setTimeout(() => {
-  console.log(inputValue);
-}, 2000);
+  marker.style.display = "none";
+}, 3000);
 
 function ipDdata(data) {
   ipAddress.textContent = data.query;
@@ -18,17 +18,21 @@ function ipDdata(data) {
   currLocation.textContent = `${data.country}, ${data.countryCode}`;
 }
 
-btn.addEventListener("click", () => {
+function getIp(params) {
   fetch(`http://ip-api.com/json/${input.value}`)
     .then((response) => response.json())
     .then((data) => {
       ipDdata(data);
       TODO: setupMap([data.lon, data.lat]);
-    });
+    })
+    .catch((error) => console.log(error));
+}
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    getIp();
+  }
 });
-
-// document.addEventListener("DOMContentLoaded", () => {
-// When searched
+btn.addEventListener("click", getIp);
 
 // By default
 fetch(`http://ip-api.com/json/${input.value}`)
@@ -56,20 +60,3 @@ function setupMap(center) {
     "top-left"
   );
 }
-
-setTimeout(() => {
-  marker.style.display = "none";
-}, 5000);
-// });
-
-/*
-
-
- fetch(`http://ip-api.com/json/${inputValue}`)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(input);
-      console.log(inputValue);
-      ipDdata(data);
-    });
-*/

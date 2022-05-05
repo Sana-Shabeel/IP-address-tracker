@@ -172,7 +172,7 @@ img {
   .info-section {
     max-width: 100%;
     height: 30vh;
-    padding: 0 5px;
+    padding: 10 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
