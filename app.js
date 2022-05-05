@@ -19,7 +19,7 @@ function ipDdata(data) {
 }
 
 function getIp(params) {
-  fetch(`https://ip-api.com/json/${input.value}`)
+  fetch(`http://ip-api.com/json/${input.value}`)
     .then((response) => response.json())
     .then((data) => {
       ipDdata(data);
