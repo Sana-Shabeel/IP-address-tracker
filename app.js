@@ -12,18 +12,22 @@ setTimeout(() => {
 }, 3000);
 
 function ipDdata(data) {
-  ipAddress.textContent = data.query;
-  isp.textContent = data.isp;
-  timezone.textContent = data.zip;
-  currLocation.textContent = `${data.country}, ${data.countryCode}`;
+  console.log(data);
+  ipAddress.textContent = data.ip_address;
+  isp.textContent = data.connection.isp_name;
+  timezone.textContent = data.postal_code;
+  currLocation.textContent = data.city;
 }
+const API_KEY = "c9e6925862e242a1957b795f29fe670e";
 
 function getIp(params) {
-  fetch(`http://ip-api.com/json/${input.value}`)
+  fetch(
+    `https://ipgeolocation.abstractapi.com/v1/?api_key=${API_KEY}&ip_address=${input.value}`
+  )
     .then((response) => response.json())
     .then((data) => {
       ipDdata(data);
-      TODO: setupMap([data.lon, data.lat]);
+      TODO: setupMap([data.longitude, data.latitude]);
     })
     .catch((error) => console.log(error));
 }
@@ -35,11 +39,13 @@ document.addEventListener("keydown", (e) => {
 btn.addEventListener("click", getIp);
 
 // By default
-fetch(`http://ip-api.com/json/${input.value}`)
+fetch(
+  `https://ipgeolocation.abstractapi.com/v1/?api_key=${API_KEY}&ip_address=${input.value}`
+)
   .then((response) => response.json())
   .then((data) => {
     ipDdata(data);
-    TODO: setupMap([data.lon, data.lat]);
+    TODO: setupMap([data.longitude, data.latitude]);
   });
 
 // Map Setup
